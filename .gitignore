@@ -1,0 +1,7 @@
+# Ignorar la carpeta artifacts dentro de contracts
+contracts/artifacts/
+.deps
+.git
+
+# No ignorar la carpeta contracts
+!contracts/
