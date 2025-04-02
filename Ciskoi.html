@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciskoi - Crypto Wallet</title>
+    <link rel="stylesheet" href="Ciskoi.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Pantalla de Bienvenida -->
+    <section id="welcome-screen" class="active">
+        <div class="welcome-container">
+            <h1>Bienvenido a Ciskoi</h1>
+            <p>Administra tus fondos en Ethereum de forma segura. Conecta tu billetera MetaMask para empezar.</p>
+            <button id="connectWallet">Conectar con MetaMask</button>
+        </div>
+    </section>
+
+    <!-- Interfaz Principal (se muestra después de conectar) -->
+    <section id="wallet-screen" class="hidden">
+        <header>
+            <h2>Ciskoi Wallet</h2>
+            <button id="disconnectWallet">Desconectar</button>
+        </header>
+
+        <div class="wallet-info">
+            <p><strong>Cuenta:</strong> <span id="userAddress">No conectado</span></p>
+            <p><strong>Saldo:</strong> <span id="balance">0 ETH</span> (<span id="balanceUSD">$0.00</span>)</p>
+        </div>
+
+        <div class="transaction-section">
+            <h3>Enviar Ethereum</h3>
+            <input type="text" id="recipientAddress" placeholder="Dirección del destinatario">
+            <input type="number" id="ethAmount" placeholder="Cantidad en ETH">
+            <button id="sendTransaction">Enviar ETH</button>
+        </div>
+
+        <div class="transaction-history">
+            <h3>Historial de Transacciones</h3>
+            <ul id="historyList"></ul>
+        </div>
+    </section>
+
+    <script src="Ciskoi.js"></script>
+</body>
+</html>
