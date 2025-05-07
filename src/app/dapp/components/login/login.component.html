@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="login-background"></div>
+  <nz-card class="login-card">
+    <div class="login-logo">
+      <i nz-icon nzType="wallet" nzTheme="fill" style="font-size: 64px; color: #f61b1b;"></i>
+    </div>
+    
+    <h1 class="login-title" nz-typography nzType="secondary">Bienvenido a tu DApp</h1>
+    <p class="login-subtitle">Conecta tu wallet para empezar a operar</p>
+    
+    <div *ngIf="isMetaMaskConnected; else loginForms" class="metamask-connected">
+      <div class="metamask-success">
+        <i nz-icon nzType="check-circle" nzTheme="fill" class="metamask-icon"></i>
+        <h2>Conectado a MetaMask</h2>
+        <p class="wallet-address">Wallet: {{walletAddress | slice:0:6}}...{{walletAddress | slice:-4}}</p>
+        <p>Redirigiendo a tu wallet...</p>
+        <nz-spin nzSimple></nz-spin>
+      </div>
+    </div>
+    
+    <ng-template #loginForms>
+      <button 
+        nz-button 
+        nzType="primary" 
+        nzBlock 
+        class="metamask-button"
+        (click)="connectMetaMask()" 
+        [nzLoading]="isLoading"
+        ngSkipHydration><!-- Añadido ngSkipHydration para prevenir errores de hidratación -->
+        <i nz-icon nzType="wallet" nzTheme="outline"></i>
+        Conectar con MetaMask
+      </button>
+    </ng-template>
+    
+    <div class="login-footer">
+      <p>© 2025 CISKOI</p>
+    </div>
+  </nz-card>
+</div>

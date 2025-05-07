@@ -1,0 +1,72 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="#" class="sidebar-logo-link">
+        <i nz-icon nzType="wallet" nzTheme="fill" class="logo-icon"></i>
+        <h1 *ngIf="!isCollapsed">CISKOI Wallet</h1>
+      </a>
+    </div>
+    
+    <div class="user-info" *ngIf="!isCollapsed">
+      <nz-avatar nzIcon="user" nzSize="large"></nz-avatar>
+      <div class="user-details">
+        <h3 class="username">{{walletAddress | slice:0:6}}...{{walletAddress | slice:-4}}</h3>
+        <span class="user-status">Conectado</span>
+      </div>
+    </div>
+    
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzSelected routerLink="/wallet/dashboard">
+        <i nz-icon nzType="dashboard"></i>
+        <span>Datos Generales</span>
+      </li>
+            
+      <li nz-menu-item routerLink="/wallet/contact">
+        <i nz-icon nzType="team"></i>
+        <span>Contactos</span>
+      </li>
+      
+      <li nz-menu-item routerLink="/wallet/transferencias">
+        <i nz-icon nzType="transaction"></i>
+        <span>Transferencias</span>
+      </li>
+      
+      <li nz-menu-item routerLink="/wallet/configuracion">
+        <i nz-icon nzType="setting"></i>
+        <span>Configuración</span>
+      </li>
+    </ul>
+  </nz-sider>
+  
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+             class="trigger"></i>
+        </span>
+        <div class="header-actions">
+          <span class="network-status">
+            <nz-badge nzStatus="success"></nz-badge> Ethereum Mainnet
+          </span>
+          <button nz-button nzType="text" (click)="disconnectWallet()">
+            <i nz-icon nzType="logout"></i> Desconectar
+          </button>
+        </div>
+      </div>
+    </nz-header>
+    
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    
+    <nz-footer>CISKOI DApp © 2025</nz-footer>
+  </nz-layout>
+</nz-layout>

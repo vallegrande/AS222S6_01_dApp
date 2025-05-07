@@ -1,0 +1,153 @@
+.app-layout {
+  min-height: 100vh; /* Cambiado de height a min-height */
+}
+
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0,21,41,.35);
+  overflow-y: auto; /* Permitir desplazamiento si el contenido es demasiado largo */
+}
+
+.sidebar-logo {
+  position: relative;
+  height: 64px;
+  padding-left: 16px;
+  overflow: hidden;
+  line-height: 64px;
+  background: #001529;
+  transition: all .3s;
+}
+
+.sidebar-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: #f61b1b;
+  margin-right: 8px;
+}
+
+.sidebar-logo h1 {
+  display: inline-block;
+  margin: 0 0 0 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.user-info {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.user-details {
+  margin-left: 12px;
+  overflow: hidden; /* Evitar desbordamiento en pantallas pequeñas */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos para texto cortado */
+}
+
+.username {
+  color: #fff;
+  margin: 0;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-status {
+  color: #52c41a;
+  font-size: 12px;
+}
+
+.header-trigger {
+  height: 64px;
+  padding: 20px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .3s,padding 0s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.app-header {
+  position: relative;
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  padding-right: 24px;
+  flex-wrap: wrap; /* Permitir envolver en pantallas pequeñas */
+}
+
+.network-status {
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+}
+
+nz-content {
+  margin: 24px;
+  overflow: auto; /* Permitir desplazamiento del contenido */
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: calc(100vh - 64px - 48px - 70px); /* Altura mínima calculada (100vh - header - margins - footer) */
+  border-radius: 4px;
+  overflow: auto; /* Permitir desplazamiento si el contenido es demasiado largo */
+}
+
+nz-footer {
+  text-align: center;
+}
+
+/* Media queries para mejorar la responsividad */
+@media (max-width: 768px) {
+  nz-content {
+    margin: 12px;
+  }
+  
+  .inner-content {
+    padding: 16px;
+  }
+  
+  .header-actions {
+    padding-right: 12px;
+  }
+  
+  .network-status {
+    margin-right: 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .network-status {
+    display: none; /* Ocultar en pantallas muy pequeñas para ahorrar espacio */
+  }
+  
+  .header-actions button {
+    padding: 0 8px;
+  }
+}

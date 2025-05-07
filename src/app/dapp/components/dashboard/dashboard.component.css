@@ -1,0 +1,37 @@
+.dashboard-container {
+    padding: 16px;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .transactions-section {
+    margin-top: 24px;
+  }
+  
+  h1 {
+    margin-bottom: 24px;
+  }
+  
+  :host ::ng-deep {
+    .ant-tag {
+      text-transform: capitalize;
+    }
+    
+    .ant-table-tbody > tr > td {
+      vertical-align: middle;
+    }
+    
+    .ant-card {
+      height: 100%;
+      margin-bottom: 16px;
+    }
+    
+    .ant-statistic-content {
+      font-size: 20px;
+    }
+  }

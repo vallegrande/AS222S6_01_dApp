@@ -1,0 +1,160 @@
+<div class="container">
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzXs]="24" [nzMd]="16">
+      <nz-card>
+        <div class="wallet-header">
+          <h2 nz-typography>Transferencias de ETH</h2>
+          
+          <!-- Status de conexión -->
+          <div class="wallet-status">
+            <ng-container *ngIf="isWalletConnected(); else notConnected">
+              <div class="wallet-address">
+                <nz-avatar [nzShape]="'square'" [nzSize]="28">
+                  <i nz-icon nzType="wallet" nzTheme="outline"></i>
+                </nz-avatar>
+                <span>{{ formatAddress(walletAddress) }}</span>
+                <button 
+                  nz-button 
+                  nzType="default" 
+                  nzSize="small" 
+                  nzShape="circle" 
+                  (click)="disconnectWallet()"
+                  nzTooltip="Desconectar"
+                >
+                  <i nz-icon nzType="logout" nzTheme="outline"></i>
+                </button>
+              </div>
+              <div nzTooltip="Balance de tu wallet">
+                {{ accountBalance | number:'1.4-4' }} ETH
+              </div>
+            </ng-container>
+            
+            <ng-template #notConnected>
+              <button 
+                nz-button 
+                nzType="primary" 
+                [nzLoading]="isLoading" 
+                (click)="connectWallet()"
+              >
+                <i nz-icon nzType="wallet" nzTheme="outline"></i> Conectar Wallet
+              </button>
+            </ng-template>
+          </div>
+        </div>
+        
+        <!-- Mensaje de error si existe -->
+        <nz-alert 
+          *ngIf="errorMessage" 
+          [nzType]="'error'" 
+          [nzMessage]="errorMessage" 
+          [nzShowIcon]="true" 
+          class="mb-4"
+        ></nz-alert>
+        
+        <!-- Formulario de transferencia -->
+        <form [formGroup]="transferForm" (ngSubmit)="sendTransaction()" *ngIf="isWalletConnected()">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Destinatario</nz-form-label>
+            <nz-form-control [nzErrorTip]="'Ingrese una dirección de Ethereum válida'">
+              <nz-input-group [nzAddOnBefore]="contactsTemplate">
+                <input 
+                  type="text" 
+                  nz-input 
+                  formControlName="recipient" 
+                  placeholder="0x..."
+                />
+              </nz-input-group>
+              <ng-template #contactsTemplate>
+                <nz-select 
+                  [ngModel]="selectedContact" 
+                  (ngModelChange)="selectContact($event)" 
+                  [ngModelOptions]="{standalone: true}"
+                  [nzPlaceHolder]="'Contactos'"
+                  style="width: 120px;"
+                >
+                  <nz-option 
+                    *ngFor="let contact of contacts" 
+                    [nzValue]="contact.walletAddress" 
+                    [nzLabel]="contact.name"
+                  ></nz-option>
+                </nz-select>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">Cantidad (ETH)</nz-form-label>
+            <nz-form-control [nzErrorTip]="'Ingrese una cantidad válida mayor a 0.000001'">
+              <nz-input-group [nzAddOnAfter]="'ETH'">
+                <input 
+                  type="number" 
+                  nz-input 
+                  formControlName="amount" 
+                  placeholder="0.01"
+                  [min]="0.000001"
+                  [step]="0.001"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          
+          <div class="form-buttons">
+            <button 
+              nz-button 
+              [nzType]="'primary'" 
+              [disabled]="!transferForm.valid" 
+              [nzLoading]="isSendingTransfer"
+            >
+              <i nz-icon nzType="send" nzTheme="outline"></i> Enviar Transferencia
+            </button>
+          </div>
+        </form>
+        
+        <!-- Panel informativo cuando no está conectado -->
+        <div *ngIf="!isWalletConnected()" class="wallet-not-connected">
+          <i nz-icon nzType="wallet" nzTheme="outline" style="font-size: 48px;"></i>
+          <p>Conecta tu wallet para realizar transferencias</p>
+        </div>
+      </nz-card>
+    </div>
+    
+    <!-- Panel lateral con información adicional -->
+    <div nz-col [nzXs]="24" [nzMd]="8">
+      <nz-card>
+        <h3 nz-typography>Información</h3>
+        <p>Desde esta pantalla puedes realizar transferencias de ETH a cualquier dirección de Ethereum.</p>
+        
+        <nz-divider></nz-divider>
+        
+        <h4 nz-typography>Contactos recientes</h4>
+        <div class="contacts-list">
+          <div *ngFor="let contact of contacts.slice(0, 5)" class="contact-item">
+            <div class="contact-avatar">
+              <nz-avatar 
+                [nzText]="contact.name.charAt(0)" 
+                [nzSize]="32"
+                [nzShape]="'circle'"
+              ></nz-avatar>
+            </div>
+            <div class="contact-info">
+              <span class="contact-name">{{ contact.name }}</span>
+              <span class="contact-address">{{ formatAddress(contact.walletAddress) }}</span>
+            </div>
+            <button 
+              nz-button 
+              nzType="link" 
+              nzSize="small"
+              (click)="selectContact(contact.walletAddress)"
+            >
+              <i nz-icon nzType="user" nzTheme="outline"></i>
+            </button>
+          </div>
+          
+          <div *ngIf="contacts.length === 0" class="no-contacts">
+            No hay contactos guardados
+          </div>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</div>

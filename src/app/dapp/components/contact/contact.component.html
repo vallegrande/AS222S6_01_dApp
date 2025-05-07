@@ -1,0 +1,232 @@
+<div class="contact-page-container">
+  <nz-card [nzTitle]="cardTitle" [nzExtra]="extraTemplate" class="contact-card">
+    <ng-template #cardTitle>
+      <div class="card-title">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span>Gestión de Contactos</span>
+      </div>
+    </ng-template>
+    <ng-template #extraTemplate>
+      <div class="extra-actions">
+        <span class="help-text">Administra los contactos para tus transferencias</span>
+        <button 
+          nz-button 
+          nzType="primary" 
+          nzShape="circle"
+          (click)="exportContacts()"
+          nz-tooltip
+          nzTooltipTitle="Exportar contactos">
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </ng-template>
+
+    <!-- Buscador de contactos -->
+    <div class="search-container" *ngIf="contacts.length > 0">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input 
+          type="text" 
+          nz-input 
+          placeholder="Buscar contactos..." 
+          [(ngModel)]="searchValue"
+          name="searchValue"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </div>
+
+    <!-- Formulario para agregar/editar contactos -->
+    <form class="contact-form">
+      <nz-divider [nzText]="isEditing ? 'Editar Contacto' : 'Nuevo Contacto'" nzOrientation="left"></nz-divider>
+      
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+          <nz-form-item>
+            <nz-form-label>Dirección de Wallet</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa una dirección válida (formato 0x...)">
+              <input 
+                nz-input 
+                placeholder="Ej: 0xd5eADFc19df7d604546eE4d98B03B9c6dfCbE2df" 
+                [(ngModel)]="contactForm.walletAddress" 
+                name="walletAddress"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+          <nz-form-item>
+            <nz-form-label>Nombre del Contacto</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa un nombre">
+              <input 
+                nz-input 
+                placeholder="Nombre del contacto" 
+                [(ngModel)]="contactForm.name" 
+                name="name"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="16">
+          <nz-form-item>
+            <nz-form-label>Descripción</nz-form-label>
+            <nz-form-control>
+              <input 
+                nz-input 
+                placeholder="Descripción opcional" 
+                [(ngModel)]="contactForm.description" 
+                name="description"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        
+        <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="8">
+          <nz-form-item>
+            <nz-form-label>Color</nz-form-label>
+            <nz-form-control>
+              <nz-color-picker [(ngModel)]="contactForm.color" name="color"></nz-color-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button 
+          nz-button 
+          nzType="primary" 
+          (click)="addContact()" 
+          [disabled]="!contactForm.walletAddress || !contactForm.name"
+        >
+          <i nz-icon [nzType]="isEditing ? 'save' : 'plus'"></i>
+          {{ isEditing ? 'Actualizar Contacto' : 'Añadir Contacto' }}
+        </button>
+        
+        <button 
+          *ngIf="isEditing" 
+          nz-button 
+          (click)="cancelEdit()" 
+          class="cancel-button"
+        >
+          <i nz-icon nzType="close"></i>
+          Cancelar
+        </button>
+      </div>
+    </form>
+
+    <!-- Tabla de contactos -->
+    <nz-divider nzText="Lista de Contactos" nzOrientation="left"></nz-divider>
+    
+    <!-- Estado de carga -->
+    <div *ngIf="loadingContacts" class="loading-state">
+      <i nz-icon nzType="loading" nzSpin></i>
+      <p>Cargando contactos...</p>
+    </div>
+    
+    <!-- Estado vacío -->
+    <div *ngIf="!loadingContacts && contacts.length === 0" class="empty-state">
+      <nz-empty 
+        nzNotFoundImage="simple" 
+        [nzNotFoundContent]="emptyContentTpl">
+      </nz-empty>
+      <ng-template #emptyContentTpl>
+        <span>No hay contactos agregados todavía</span>
+      </ng-template>
+    </div>
+    
+    <!-- Resultado de búsqueda vacío -->
+    <div *ngIf="!loadingContacts && contacts.length > 0 && filteredContacts.length === 0" class="empty-state">
+      <nz-empty 
+        nzNotFoundImage="simple" 
+        [nzNotFoundContent]="noResultsTpl">
+      </nz-empty>
+      <ng-template #noResultsTpl>
+        <span>No se encontraron contactos con "{{ searchValue }}"</span>
+      </ng-template>
+    </div>
+    
+    <!-- Tabla de contactos -->
+    <nz-table 
+      *ngIf="!loadingContacts && filteredContacts.length > 0"
+      #contactsTable 
+      [nzData]="filteredContacts" 
+      nzSize="middle" 
+      [nzPageSize]="5"
+      [nzScroll]="{ x: '800px' }"
+      nzTableLayout="fixed"
+      class="contacts-table"
+    >
+      <thead>
+        <tr>
+          <th nzWidth="60px">Color</th>
+          <th nzWidth="120px">Nombre</th>
+          <th nzWidth="200px">Dirección</th>
+          <th>Descripción</th>
+          <th nzWidth="120px">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contactsTable.data; let i = index" class="contact-row">
+          <td>
+            <div class="color-badge" [style.background-color]="contact.color"></div>
+          </td>
+          <td>{{ contact.name }}</td>
+          <td class="wallet-address">
+            <span class="address-text">
+              {{ contact.walletAddress | slice:0:6 }}...{{ contact.walletAddress | slice:-4 }}
+            </span>
+            <button 
+              nz-button 
+              nzType="text" 
+              nzSize="small" 
+              (click)="copyToClipboard(contact.walletAddress); $event.stopPropagation()"
+              nz-tooltip
+              nzTooltipTitle="Copiar dirección"
+              class="copy-button"
+            >
+              <i nz-icon nzType="copy"></i>
+            </button>
+          </td>
+          <td class="description-cell">
+            <span class="description-text">{{ contact.description || '-' }}</span>
+          </td>
+          <td class="action-buttons">
+            <button 
+              nz-button 
+              nzType="primary" 
+              nzShape="circle" 
+              nzSize="small" 
+              (click)="editContact(contacts.indexOf(contact))"
+              nz-tooltip
+              nzTooltipTitle="Editar"
+              class="edit-button"
+            >
+              <i nz-icon nzType="edit"></i>
+            </button>
+            <button 
+              nz-button 
+              nzType="primary" 
+              nzDanger 
+              nzShape="circle" 
+              nzSize="small" 
+              nz-popconfirm
+              nzPopconfirmTitle="¿Estás seguro de eliminar este contacto?"
+              nzPopconfirmPlacement="top"
+              (nzOnConfirm)="deleteContact(contacts.indexOf(contact))"
+              nz-tooltip
+              nzTooltipTitle="Eliminar"
+              class="delete-button"
+            >
+              <i nz-icon nzType="delete"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</div>
