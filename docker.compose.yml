@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ciskoi-wallet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ciskoi-wallet
+    image: elsermanuel/ciskoi-wallet-vg:latest
+    ports:
+      - "4200:80"
+    restart: unless-stopped
+    # Añadimos healthcheck para asegurar que la aplicación esté funcionando correctamente
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
