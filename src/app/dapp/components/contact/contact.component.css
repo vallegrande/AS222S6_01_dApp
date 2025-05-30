@@ -133,7 +133,7 @@
   animation: fadeIn 0.3s ease-in-out;
 
   ::ng-deep .ant-table-thead > tr > th {
-    background-color: #ec1515;
+    background-color: #fbf9f9;
     font-weight: 600;
   }
 
