@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  ciskoi-wallet:
+  ciskoi:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ciskoi-wallet
-    image: elsermanuel/ciskoi-wallet-vg:latest
+    container_name: ciskoi
+    image: lizbet/ciskoi
     ports:
       - "4200:80"
     restart: unless-stopped
