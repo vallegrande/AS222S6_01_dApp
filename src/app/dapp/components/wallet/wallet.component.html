@@ -1,0 +1,71 @@
+<nz-layout class="app-layout modern-theme">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="240px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    
+    <div class="sidebar-logo">
+      <a href="#" class="sidebar-logo-link">
+        <i nz-icon nzType="wallet" nzTheme="fill" class="logo-icon spin"></i>
+        <h1 *ngIf="!isCollapsed">{{ 'wallet.titulo' | translate }}</h1>
+      </a>
+    </div>
+    
+    <div class="user-info fade-in" *ngIf="!isCollapsed">
+      <nz-avatar nzIcon="user" nzSize="large" class="custom-avatar"></nz-avatar>
+      <div class="user-details">
+        <h3 class="username">{{walletAddress | slice:0:6}}...{{walletAddress | slice:-4}}</h3>
+        <span class="user-status">{{ 'wallet.conectado' | translate }}</span>
+      </div>
+    </div>
+    
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" class="animated-menu">
+      <li nz-menu-item routerLink="/wallet/dashboard">
+        <i nz-icon nzType="dashboard"></i>
+        <span>{{ 'wallet.menu.inicio' | translate }}</span>
+      </li>
+      
+      <li nz-menu-item routerLink="/wallet/contact">
+        <i nz-icon nzType="team"></i>
+        <span>{{ 'wallet.menu.contactos' | translate }}</span>
+      </li>
+      
+      <li nz-menu-item routerLink="/wallet/transferencias">
+        <i nz-icon nzType="swap"></i>
+        <span>{{ 'wallet.menu.transferencias' | translate }}</span>
+      </li>
+      
+      <li nz-menu-item routerLink="/wallet/configuracion">
+        <i nz-icon nzType="setting"></i>
+        <span>{{ 'wallet.menu.configuracion' | translate }}</span>
+      </li>
+    </ul>
+  </nz-sider>
+  
+  <nz-layout>
+    <nz-header class="app-header">
+      <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+        <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" class="trigger"></i>
+      </span>
+      
+      <div class="header-actions">
+        <nz-badge nzStatus="success" class="network-status">
+          <span class="network-text">{{ 'wallet.header.red' | translate }}</span>
+        </nz-badge>
+        <button nz-button nzType="default" nzShape="round" (click)="disconnectWallet()">
+          <i nz-icon nzType="logout"></i> {{ 'wallet.header.desconectar' | translate }}
+        </button>
+      </div>
+    </nz-header>
+    
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    
+    <nz-footer class="app-footer">{{ 'wallet.footer' | translate }}</nz-footer>
+  </nz-layout>
+</nz-layout>

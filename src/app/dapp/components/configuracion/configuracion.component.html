@@ -1,0 +1,53 @@
+<div class="configuracion-container">
+  <div class="configuracion-header">
+    <h1>{{ 'configuracion.titulo' | translate }}</h1>
+  </div>
+
+  <div class="configuracion-content">
+    <!-- Sección de Idioma -->
+    <div class="configuracion-seccion">
+      <div class="seccion-header">
+        <h2>{{ 'configuracion.idioma.titulo' | translate }}</h2>
+        <p class="seccion-descripcion">{{ 'configuracion.idioma.descripcion' | translate }}</p>
+      </div>
+      
+      <div class="idioma-selector">
+        <div class="idioma-actual">
+          <span class="etiqueta">{{ 'configuracion.idioma.titulo' | translate }}:</span>
+          <span class="valor">{{ 'configuracion.idioma.espanol' | translate }}</span>
+        </div>
+        
+        <div class="idiomas-opciones">
+          <div 
+            *ngFor="let idioma of idiomasDisponibles" 
+            class="idioma-opcion"
+            [class.activo]="idioma.codigo === idiomaActual"
+            (click)="cambiarIdioma(idioma.codigo)">
+            <div class="idioma-info">
+              <span class="idioma-nombre">{{ idioma.nombre }}</span>
+              <span class="idioma-codigo">{{ idioma.codigo.toUpperCase() }}</span>
+            </div>
+            <div class="idioma-indicator" *ngIf="idioma.codigo === idiomaActual">
+              ✓
+            </div>
+          </div>
+        </div>
+        
+        <button 
+          class="btn-cambiar-idioma"
+          (click)="cambiarIdioma(idiomaActual)"
+          disabled>
+          {{ 'configuracion.idioma.cambiar' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Aquí puedes agregar más secciones de configuración -->
+    <div class="configuracion-seccion">
+      <div class="seccion-header">
+        <h2>Configuraciones Adicionales</h2>
+        <p class="seccion-descripcion">Próximamente más opciones de configuración...</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+.container {
+  padding: 24px;
+}
+
+.wallet-title {
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #0eabff, #ff009e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  border-left: 5px solid #1890ff;
+  padding-left: 16px;
+  animation: fadeSlideIn 0.4s ease-in-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.wallet-icon {
+  background-color: #44fa34; 
+  i[nz-icon] {
+    font-size: 16px;
+  }
+}
+
+
+.wallet-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.wallet-address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color:rgba(255, 255, 255, 0.863);
+  padding: 4px 12px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.wallet-not-connected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  color: #b01dff;
+}
+
+.contacts-list {
+  margin-top: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #d400ff;
+}
+
+.contact-avatar {
+  margin-right: 12px;
+}
+
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.contact-name {
+  font-weight: 500;
+}
+
+.contact-address {
+  font-size: 12px;
+}
+
+.no-contacts {
+  font-style: italic;
+  padding: 12px 0;
+}
+
+.transfer-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.transfer-mode-toggle span {
+  color: #999;
+}
+
+.transfer-mode-toggle span.active {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.contract-info {
+  margin-bottom: 16px;
+}
+
+.transaction-options {
+  margin: 16px 0;
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* Estilo general para el selector de contactos */
+
+
+nz-select {
+  font-weight: bold !important;
+  background-image: linear-gradient(90deg,#8d1efd, #cc02f4);
+  border-radius: 4px;
+  color: white !important;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+
+nz-select .ant-select-item-option {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+nz-select .ant-select-item-option-active {
+  background-color: #1890ff !important;
+  color: rgb(228, 228, 228) !important;
+  font-weight: bold !important;
+}
+
+
+.transaction-options ul {
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.transaction-options li {
+  margin-bottom: 6px;
+}
+
+.transaction-options li:last-child {
+  margin-bottom: 0;
+}

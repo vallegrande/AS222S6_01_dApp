@@ -1,0 +1,229 @@
+<div class="container">
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzXs]="24" [nzMd]="16">
+      <nz-card>
+        <div class="wallet-header">
+          <h2 nz-typography class="wallet-title">{{ 'transaccion.wallet.title' | translate }}</h2>
+          <!-- Status de conexión -->
+          <div class="wallet-status">
+            <ng-container *ngIf="isWalletConnected(); else notConnected">
+              <div class="wallet-address">
+                <nz-avatar class="wallet-icon" [nzShape]="'square'" [nzSize]="28">
+                  <i nz-icon nzType="wallet" nzTheme="outline"></i>
+                </nz-avatar>
+                <span>{{ formatAddress(walletAddress) }}</span>
+                <button nz-button nzType="default" nzSize="small" nzShape="circle" (click)="disconnectWallet()"
+                  nz-tooltip [nzTooltipTitle]="'transaccion.wallet.disconnect' | translate">
+                  <i nz-icon nzType="logout" nzTheme="outline"></i>
+                </button>
+              </div>
+              <div nz-tooltip [nzTooltipTitle]="'transaccion.wallet.balance_tooltip' | translate">
+                {{ accountBalance | number:'1.4-4' }} {{ 'transaccion.common.eth' | translate }}
+              </div>
+            </ng-container>
+
+            <ng-template #notConnected>
+              <button nz-button nzType="primary" [nzLoading]="isLoading" (click)="connectWallet()">
+                <i nz-icon nzType="wallet" nzTheme="outline"></i> {{ 'transaccion.wallet.connect' | translate }}
+              </button>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Mensaje de error si existe -->
+        <nz-alert *ngIf="errorMessage" [nzType]="'error'" [nzMessage]="errorMessage" [nzShowIcon]="true"
+          class="mb-4"></nz-alert>
+
+        <!-- Configuración del contrato -->
+        <div *ngIf="isWalletConnected()" class="contract-config mb-4">
+          <div class="contract-status">
+            <h4>{{ 'transaccion.contract.title' | translate }}</h4>
+            <div class="status-row">
+              <span>{{ 'transaccion.contract.status' | translate }}: </span>
+              <nz-tag [nzColor]="isContractConfigured ? 'green' : 'orange'">
+                {{ getContractStatus() }}
+              </nz-tag>
+              <ng-container *ngIf="isContractConfigured">
+                <span class="contract-address-display">
+                  {{ formatAddress(contractAddress) }}
+                </span>
+                <button nz-button nzType="link" nzSize="small" (click)="removeContract()" nzDanger>
+                  <i nz-icon nzType="delete" nzTheme="outline"></i> {{ 'transaccion.contract.remove' | translate }}
+                </button>
+              </ng-container>
+            </div>
+            <button nz-button nzType="dashed" nzSize="small" (click)="showContractModal()">
+              <i nz-icon nzType="setting" nzTheme="outline"></i>
+              {{ isContractConfigured ? ('transaccion.contract.change' | translate) : ('transaccion.contract.configure'
+              | translate) }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Formulario de transferencia -->
+        <form [formGroup]="transferForm" (ngSubmit)="sendTransaction()" *ngIf="isWalletConnected()">
+          <!-- Toggle para seleccionar modo de envío -->
+          <div class="transfer-mode-toggle">
+            <span [class.active]="useContract">{{ 'transaccion.contract.use_contract' | translate }}</span>
+            <nz-switch [(ngModel)]="useContract" [ngModelOptions]="{standalone: true}"
+              [nzDisabled]="!isContractConfigured" (ngModelChange)="toggleUseContract()">
+            </nz-switch>
+            <span [class.active]="!useContract">{{ 'transaccion.contract.direct_send' | translate }}</span>
+          </div>
+
+          <!-- Información del balance de contrato si está usando el contrato -->
+          <div *ngIf="useContract && isContractConfigured" class="contract-info">
+            <nz-spin [nzSpinning]="isContractDataLoading">
+              <nz-alert nzType="info"
+                [nzMessage]="('transaccion.contract.balance' | translate) + ': ' + (contractBalance | number:'1.4-4') + ' ' + ('transaccion.common.eth' | translate)"
+                [nzShowIcon]="true"></nz-alert>
+            </nz-spin>
+          </div>
+
+          <!-- Alerta si quiere usar contrato pero no está configurado -->
+          <div *ngIf="useContract && !isContractConfigured" class="contract-warning">
+            <nz-alert nzType="warning" [nzMessage]="'transaccion.contract.warning_message' | translate"
+              [nzShowIcon]="true"></nz-alert>
+          </div>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">{{ 'transaccion.transfer.recipient_label' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="'transaccion.transfer.recipient_error' | translate">
+              <nz-input-group [nzAddOnBefore]="contactsTemplate">
+                <input type="text" nz-input formControlName="recipient"
+                  [placeholder]="'transaccion.transfer.recipient_placeholder' | translate" />
+              </nz-input-group>
+              <ng-template #contactsTemplate>
+                <nz-select [ngModel]="selectedContact" (ngModelChange)="selectContact($event)"
+                  [ngModelOptions]="{standalone: true}"
+                  [nzPlaceHolder]="'transaccion.transfer.contacts_placeholder' | translate" style="width: 120px;">
+                  <nz-option *ngFor="let contact of contacts" [nzValue]="contact.walletAddress"
+                    [nzLabel]="contact.name"></nz-option>
+                </nz-select>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="24">{{ 'transaccion.transfer.amount_label' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="'transaccion.transfer.amount_error' | translate">
+              <nz-input-group [nzAddOnAfter]="'transaccion.common.eth' | translate">
+                <input type="number" nz-input formControlName="amount"
+                  [placeholder]="'transaccion.transfer.amount_placeholder' | translate" [min]="0.000001"
+                  [step]="0.001" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Campo de descripción solo visible cuando se usa el contrato -->
+          <nz-form-item *ngIf="useContract && isContractConfigured">
+            <nz-form-label [nzSpan]="24">{{ 'transaccion.transfer.description_label' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="'transaccion.transfer.description_error' | translate">
+              <input type="text" nz-input formControlName="description"
+                [placeholder]="'transaccion.transfer.description_placeholder' | translate" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <div class="form-buttons">
+            <button nz-button [nzType]="'primary'"
+              [disabled]="!transferForm.valid || (useContract && !isContractConfigured)"
+              [nzLoading]="isSendingTransfer">
+              <i nz-icon nzType="send" nzTheme="outline"></i>
+              {{ useContract ? ('transaccion.transfer.send_via_contract' | translate) :
+              ('transaccion.transfer.send_directly' | translate) }}
+            </button>
+
+            <button nz-button nzType="default" type="button" (click)="refreshWalletData()"
+              [nzLoading]="isContractDataLoading">
+              <i nz-icon nzType="reload" nzTheme="outline"></i> {{ 'transaccion.transfer.refresh' | translate }}
+            </button>
+          </div>
+        </form>
+
+        <!-- Panel informativo cuando no está conectado -->
+        <div *ngIf="!isWalletConnected()" class="wallet-not-connected">
+          <i nz-icon nzType="wallet" nzTheme="outline" style="font-size: 48px;"></i>
+          <p>{{ 'transaccion.wallet.not_connected_message' | translate }}</p>
+        </div>
+      </nz-card>
+    </div>
+
+    <!-- Panel lateral con información adicional -->
+    <div nz-col [nzXs]="24" [nzMd]="8">
+      <nz-card>
+        <h3 nz-typography>{{ 'transaccion.info.title' | translate }}</h3>
+        <p>{{ 'transaccion.info.description' | translate }}</p>
+
+        <div *ngIf="isWalletConnected()" class="transaction-options">
+          <h4>{{ 'transaccion.info.transfer_options' | translate }}</h4>
+          <ul>
+            <li><strong>{{ 'transaccion.info.contract_mode' | translate }}</strong></li>
+            <li><strong>{{ 'transaccion.info.direct_mode' | translate }}</strong></li>
+          </ul>
+
+          <!-- Información del límite diario si está configurado -->
+          <div *ngIf="useContract && isContractConfigured && dailyLimit > 0" class="daily-limit-info">
+            <h4>{{ 'transaccion.info.daily_limit' | translate }}</h4>
+            <div class="limit-progress">
+              <span>{{ 'transaccion.info.spent' | translate }}: {{ dailySpent | number:'1.4-4' }} {{
+                'transaccion.common.eth' | translate }}</span>
+              <span>{{ 'transaccion.info.limit' | translate }}: {{ dailyLimit | number:'1.4-4' }} {{
+                'transaccion.common.eth' | translate }}</span>
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="getDailyLimitPercentage()"></div>
+              </div>
+              <span class="percentage">{{ getDailyLimitPercentage() | number:'1.0-0' }}%</span>
+            </div>
+          </div>
+        </div>
+
+        <nz-divider></nz-divider>
+
+        <h4 nz-typography>{{ 'transaccion.info.recent_contacts' | translate }}</h4>
+        <div class="contacts-list">
+          <div *ngFor="let contact of contacts.slice(0, 5)" class="contact-item">
+            <div class="contact-avatar">
+              <nz-avatar [nzText]="contact.name.charAt(0)" [nzSize]="32" [nzShape]="'circle'"></nz-avatar>
+            </div>
+            <div class="contact-info">
+              <span class="contact-name">{{ contact.name }}</span>
+              <span class="contact-address">{{ formatAddress(contact.walletAddress) }}</span>
+            </div>
+            <button nz-button nzType="link" nzSize="small" (click)="selectContact(contact.walletAddress)">
+              <i nz-icon nzType="user" nzTheme="outline"></i>
+            </button>
+          </div>
+
+          <div *ngIf="contacts.length === 0" class="no-contacts">
+            {{ 'transaccion.info.no_contacts' | translate }}
+          </div>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para configurar dirección del contrato -->
+<nz-modal [(nzVisible)]="isContractModalVisible" [nzTitle]="'transaccion.contract.modal_title' | translate"
+  [nzOkText]="'transaccion.contract.modal_test' | translate"
+  [nzCancelText]="'transaccion.contract.modal_cancel' | translate" [nzOkLoading]="isTestingContract"
+  (nzOnOk)="testContract()" (nzOnCancel)="hideContractModal()">
+
+  <ng-container *nzModalContent>
+    <p>{{ 'transaccion.contract.modal_description' | translate }}</p>
+
+    <form [formGroup]="contractAddressForm" nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">{{ 'transaccion.contract.modal_address_label' | translate }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="'transaccion.contract.modal_address_error' | translate">
+          <input type="text" nz-input formControlName="address"
+            [placeholder]="'transaccion.transfer.recipient_placeholder' | translate" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+    <nz-alert nzType="info" [nzMessage]="'transaccion.contract.modal_info' | translate" [nzShowIcon]="true">
+    </nz-alert>
+  </ng-container>
+</nz-modal>

@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="login-background"></div>
+  <nz-card class="login-card">
+    <div class="login-logo">
+      <i nz-icon nzType="wallet" nzTheme="fill" style="font-size: 64px; color: #ff009e;"></i>
+    </div>
+        
+    <h1 class="login-title" nz-typography nzType="secondary">
+      {{ 'login.welcome_title' | translate }}
+    </h1>
+    <p class="login-subtitle">
+      {{ 'login.connect_subtitle' | translate }}
+    </p>
+        
+    <div *ngIf="isMetaMaskConnected; else loginForms" class="metamask-connected">
+      <div class="metamask-success">
+        <i nz-icon nzType="check-circle" nzTheme="fill" class="metamask-icon"></i>
+        <h2>{{ 'login.connected_title' | translate }}</h2>
+        <p class="wallet-address">
+          {{ 'login.wallet_label' | translate }} {{walletAddress | slice:0:6}}...{{walletAddress | slice:-4}}
+        </p>
+        <p>{{ 'login.redirecting_message' | translate }}</p>
+        <nz-spin nzSimple></nz-spin>
+      </div>
+    </div>
+        
+    <ng-template #loginForms>
+      <button 
+        nz-button 
+        nzType="primary" 
+        nzBlock 
+        class="metamask-button"
+        (click)="connectMetaMask()" 
+        [nzLoading]="isLoading"
+        ngSkipHydration>
+        <i nz-icon nzType="wallet" nzTheme="outline"></i>
+        {{ 'login.connect_button' | translate }}
+      </button>
+    </ng-template>
+        
+    <div class="login-footer">
+      <p>{{ 'login.footer_copyright' | translate }}</p>
+    </div>
+  </nz-card>
+</div>

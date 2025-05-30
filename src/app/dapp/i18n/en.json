@@ -1,0 +1,264 @@
+{
+    "_comentario": "init componente",
+    "navbar": {
+        "inicio": "Home",
+        "descripcion": "About Us",
+        "objetivos": "Our Mission",
+        "beneficios": "Exclusive Benefits",
+        "funcionalidades": "Features",
+        "conectar": "Connect Your Wallet Now!"
+    },
+    "descripcion": {
+        "titulo": "About Us",
+        "contenido": "Ciskoi is an innovative platform specialized in cryptocurrency management and administration. We facilitate secure and efficient transfers, offering a complete digital wallet where you can perform all your virtual currency operations reliably and transparently."
+    },
+    "objetivos": {
+        "titulo": "Our Mission",
+        "transferencias": {
+            "titulo": "Fast and Secure Transfers",
+            "descripcion": "We facilitate instant cryptocurrency transfers with minimal fees, maintaining the highest level of security in every operation performed through our platform."
+        },
+        "cartera": {
+            "titulo": "Ultra Secure Digital Wallet",
+            "descripcion": "We implement the most advanced security protocols in the market to protect your digital assets, with cutting-edge encryption and multi-factor verification systems."
+        },
+        "soporte": {
+            "titulo": "Multi-Wallet Support",
+            "descripcion": "We offer compatibility with multiple digital wallets, allowing you to manage all your cryptocurrencies from a single intuitive and customizable interface according to your needs."
+        }
+    },
+    "caracteristicas": {
+        "titulo": "Main Features",
+        "seguridad": {
+            "titulo": "Advanced Security",
+            "descripcion": "Next-generation protection for your digital assets."
+        },
+        "transacciones": {
+            "titulo": "Instant Transactions",
+            "descripcion": "Send and receive crypto in seconds."
+        },
+        "multichain": {
+            "titulo": "Multi-Chain",
+            "descripcion": "Support for multiple blockchains."
+        },
+        "gastos": {
+            "titulo": "Expense Management",
+            "descripcion": "Detailed tracking of your transactions."
+        }
+    },
+    "beneficios": {
+        "titulo": "Exclusive Benefits",
+        "comisiones": {
+            "titulo": "Reduced Fees",
+            "descripcion": "Enjoy the lowest fees in the market on all your transactions, saving up to 40% compared to other platforms."
+        },
+        "staking": {
+            "titulo": "Staking Program",
+            "descripcion": "Generate passive income by depositing your cryptocurrencies in our staking program with profitability rates above market average."
+        },
+        "soporte24": {
+            "titulo": "24/7 Support",
+            "descripcion": "Our team of specialists is available 24 hours a day, 7 days a week to resolve any questions or issues you may have."
+        },
+        "referidos": {
+            "titulo": "Referral Program",
+            "descripcion": "Earn attractive commissions for each new user you invite to the platform, building a recurring income source."
+        }
+    },
+    "hero": {
+        "titulo": "The best way to manage your",
+        "criptomonedas": "cryptocurrencies",
+        "subtitulo": "Maximize the potential of your digital assets with our secure and easy-to-use platform"
+    },
+    "equipo": {
+        "titulo": "Our Team"
+    },
+    "footer": {
+        "derechos": "All rights reserved."
+    },
+    "configuracion": {
+        "titulo": "Settings",
+        "idioma": {
+            "titulo": "Language",
+            "descripcion": "Select your preferred language",
+            "espanol": "Spanish",
+            "ingles": "English",
+            "japones": "Japanese",
+            "coreano": "Korean",
+            "frances": "French",
+            "cambiar": "Change Language"
+        }
+    },
+    "_comentari": "Wallet - Menu",
+    "wallet": {
+        "titulo": "CISKOI Wallet",
+        "conectado": "Connected",
+        "menu": {
+            "inicio": "Home",
+            "contactos": "Contacts",
+            "transferencias": "Transfers",
+            "configuracion": "Settings"
+        },
+        "header": {
+            "red": "Ethereum Mainnet",
+            "desconectar": "Disconnect"
+        },
+        "footer": "CISKOI DApp © 2025 - All rights reserved"
+    },
+    "dashboard": {
+        "titulo": "Dashboard",
+        "actualizar": "Refresh",
+        "balance": {
+            "eth": "ETH Balance",
+            "transacciones": "Transactions"
+        },
+        "transacciones": {
+            "titulo": "Transactions",
+            "nuevas": "New",
+            "nueva_transferencia": "New Transfer",
+            "headers": {
+                "hash": "Hash",
+                "tipo": "Type",
+                "cantidad": "Amount",
+                "estado": "Status",
+                "fecha": "Date"
+            },
+            "tipos": {
+                "enviado": "Sent",
+                "recibido": "Received"
+            },
+            "estados": {
+                "completado": "Completed",
+                "pendiente": "Pending",
+                "fallido": "Failed"
+            }
+        },
+        "modal": {
+            "nueva_transferencia": "New Transfer",
+            "enviar": "Send",
+            "cancelar": "Cancel",
+            "tipo_transferencia": {
+                "eth": "ETH",
+                "token": "Token"
+            },
+            "campos": {
+                "direccion_destino": "Destination Address",
+                "cantidad": "Amount"
+            },
+            "errores": {
+                "direccion_obligatoria": "Address is required",
+                "direccion_invalida": "Address is not valid",
+                "cantidad_obligatoria": "Amount is required",
+                "cantidad_minima": "Minimum amount is 0.00001"
+            }
+        }
+    },
+    "login": {
+        "welcome_title": "Welcome to your DApp",
+        "connect_subtitle": "Connect your wallet to start trading",
+        "connected_title": "Connected to MetaMask",
+        "wallet_label": "Wallet:",
+        "redirecting_message": "Redirecting to your wallet...",
+        "connect_button": "Connect with MetaMask",
+        "footer_copyright": "© 2025 CISKOI"
+    },
+    "contacto": {
+        "title": "Contact Management",
+        "help_text": "Manage contacts for your transfers",
+        "export_tooltip": "Export contacts",
+        "search_placeholder": "Search contacts...",
+        "new_contact": "New Contact",
+        "edit_contact": "Edit Contact",
+        "wallet_address_label": "Wallet Address",
+        "wallet_address_placeholder": "Ex: 0xd5eADFc19df7d604546eE4d98B03B9c6dfCbE2df",
+        "wallet_address_error": "Please enter a valid address (0x... format)",
+        "contact_name_label": "Contact Name",
+        "contact_name_placeholder": "Contact name",
+        "contact_name_error": "Please enter a name",
+        "description_label": "Description",
+        "description_placeholder": "Optional description",
+        "color_label": "Color",
+        "add_contact": "Add Contact",
+        "update_contact": "Update Contact",
+        "cancel": "Cancel",
+        "contacts_list": "Contact List",
+        "loading": "Loading contacts...",
+        "empty_state": "No contacts added yet",
+        "no_results": "No contacts found with \"{{searchValue}}\"",
+        "table_color": "Color",
+        "table_name": "Name",
+        "table_address": "Address",
+        "table_description": "Description",
+        "table_actions": "Actions",
+        "copy_tooltip": "Copy address",
+        "edit_tooltip": "Edit",
+        "delete_tooltip": "Delete",
+        "delete_confirm": "Are you sure you want to delete this contact?",
+        "no_description": "-"
+    },
+    "transaccion": {
+        "wallet": {
+            "title": "ETH Transfers",
+            "connect": "Connect Wallet",
+            "disconnect": "Disconnect",
+            "balance_tooltip": "Your wallet balance",
+            "not_connected_message": "Connect your wallet to make transfers",
+            "not_connected_description": "Connect your wallet to start making transfers"
+        },
+        "contract": {
+            "title": "Ciskoi Contract",
+            "status": "Status",
+            "configured": "Configured",
+            "not_configured": "Not Configured",
+            "configure": "Configure Contract",
+            "change": "Change Contract",
+            "remove": "Remove",
+            "use_contract": "Use Contract",
+            "direct_send": "Direct Send",
+            "balance": "Contract balance",
+            "warning_message": "To use contract mode, you must first configure the contract address",
+            "modal_title": "Configure Contract",
+            "modal_description": "Enter the smart contract address you want to use for transfers:",
+            "modal_address_label": "Contract Address",
+            "modal_address_error": "Enter a valid contract address",
+            "modal_info": "Make sure the address corresponds to a valid contract that allows ETH transfers.",
+            "modal_test": "Test Contract",
+            "modal_cancel": "Cancel"
+        },
+        "transfer": {
+            "recipient_label": "Recipient",
+            "recipient_error": "Enter a valid Ethereum address",
+            "recipient_placeholder": "0x...",
+            "amount_label": "Amount (ETH)",
+            "amount_error": "Enter a valid amount greater than 0.000001",
+            "amount_placeholder": "0.01",
+            "description_label": "Description",
+            "description_error": "Maximum 100 characters",
+            "description_placeholder": "Transfer description",
+            "send_via_contract": "Send via Contract",
+            "send_directly": "Send Directly",
+            "refresh": "Refresh",
+            "contacts_placeholder": "Contacts"
+        },
+        "info": {
+            "title": "Information",
+            "description": "From this screen you can make ETH transfers to any Ethereum address.",
+            "transfer_options": "Transfer options:",
+            "contract_mode": "Contract mode: Uses your custom smart contract to send ETH.",
+            "direct_mode": "Direct mode: Sends ETH directly from your wallet.",
+            "daily_limit": "Daily Limit",
+            "spent": "Spent",
+            "limit": "Limit",
+            "recent_contacts": "Recent contacts",
+            "no_contacts": "No saved contacts"
+        },
+        "common": {
+            "loading": "Loading...",
+            "error": "Error",
+            "success": "Success",
+            "cancel": "Cancel",
+            "ok": "OK",
+            "eth": "ETH"
+        }
+    }
+}

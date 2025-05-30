@@ -1,0 +1,135 @@
+.dashboard-container {
+  padding: 24px;
+}
+
+.dashboard-title {
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #0eabff, #ff009e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  border-left: 5px solid #1890ff;
+  padding-left: 16px;
+  animation: fadeSlideIn 0.4s ease-in-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+  color: white; /* Texto en blanco */
+  margin-bottom: 0;
+  margin-right: 16px;
+}
+
+/* Asegura que el selector de red tiene suficiente espacio */
+app-networkselector {
+  margin-right: auto;
+  margin-left: 16px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+.new-transaction {
+  background-color: rgba(82, 196, 26, 0.1);
+  transition: background-color 0.5s ease;
+}
+
+/* Animación suave al aparecer */
+@keyframes cardFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo para animar y resaltar las cartas */
+.dashboard-card {
+  animation: cardFadeSlide 0.5s ease-in-out;
+  background: linear-gradient(90deg,#6138eb, #0eabff, #ffffff);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card ::ng-deep .ant-statistic-title,
+.dashboard-card ::ng-deep .ant-statistic-content-prefix,
+.dashboard-card ::ng-deep .ant-statistic-content-suffix,
+.dashboard-card ::ng-deep .ant-statistic-content-value {
+  color: white !important;
+}
+
+.dashboard-card ::ng-deep .ant-statistic-prefix i,
+.dashboard-card ::ng-deep .ant-statistic-suffix {
+  color: white !important;
+}
+
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(24, 144, 255, 0.3); /* Sombra azul */
+}
+ 
+/* Ajustes responsivos para dispositivos móviles */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .dashboard-header h1 {
+    margin-bottom: 16px;
+    margin-right: 0;
+  }
+  
+  app-networkselector {
+    width: 100%;
+    margin-bottom: 16px;
+    margin-left: 0;
+  }
+  
+  .dashboard-header button {
+    width: 100%;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section-header button {
+    margin-top: 16px;
+    width: 100%;
+  }
+}

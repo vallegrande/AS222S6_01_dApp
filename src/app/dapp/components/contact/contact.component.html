@@ -1,0 +1,231 @@
+<div class="contact-page-container">
+  <nz-card [nzTitle]="cardTitleTemplate" [nzExtra]="extraTemplate" class="contact-card">
+    <!-- Título -->
+    <ng-template #cardTitleTemplate>
+      <div class="card-title">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span class="H2">{{ 'contacto.title' | translate }}</span>
+      </div>
+    </ng-template>
+
+    <!-- Acciones extra -->
+    <ng-template #extraTemplate>
+      <div class="extra-actions">
+        <span class="help-text">{{ 'contacto.help_text' | translate }}</span>
+        <button 
+          nz-button 
+          nzType="primary" 
+          nzShape="circle"
+          (click)="exportContacts()"
+          nz-tooltip 
+          [nzTooltipTitle]="'contacto.export_tooltip' | translate">
+          <i nz-icon nzType="download"></i>
+        </button>
+      </div>
+    </ng-template>
+
+    <!-- Buscador -->
+    <div class="search-container" *ngIf="contacts.length > 0">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input 
+          type="text" 
+          nz-input 
+          [placeholder]="'contacto.search_placeholder' | translate"
+          [(ngModel)]="searchValue" 
+          name="searchValue"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </div>
+
+    <!-- Formulario -->
+    <form class="contact-form">
+      <nz-divider [nzText]="isEditing ? ('contacto.edit_contact' | translate) : ('contacto.new_contact' | translate)" nzOrientation="left"></nz-divider>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzXs]="24" [nzMd]="12">
+          <nz-form-item>
+            <nz-form-label>{{ 'contacto.wallet_address_label' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="'contacto.wallet_address_error' | translate">
+              <input 
+                nz-input 
+                [placeholder]="'contacto.wallet_address_placeholder' | translate"
+                [(ngModel)]="contactForm.walletAddress"
+                name="walletAddress"
+                required
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col [nzXs]="24" [nzMd]="12">
+          <nz-form-item>
+            <nz-form-label>{{ 'contacto.contact_name_label' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="'contacto.contact_name_error' | translate">
+              <input 
+                nz-input 
+                [placeholder]="'contacto.contact_name_placeholder' | translate"
+                [(ngModel)]="contactForm.name"
+                name="name"
+                required
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzXs]="24" [nzMd]="16">
+          <nz-form-item>
+            <nz-form-label>{{ 'contacto.description_label' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input 
+                nz-input 
+                [placeholder]="'contacto.description_placeholder' | translate"
+                [(ngModel)]="contactForm.description" 
+                name="description"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col [nzXs]="24" [nzMd]="8">
+          <nz-form-item>
+            <nz-form-label>{{ 'contacto.color_label' | translate }}</nz-form-label>
+            <nz-form-control>
+              <nz-color-picker [(ngModel)]="contactForm.color" name="color"></nz-color-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button 
+          nz-button 
+          nzType="primary" 
+          (click)="addContact()"
+          [disabled]="!contactForm.walletAddress || !contactForm.name"
+        >
+          <i nz-icon [nzType]="isEditing ? 'save' : 'plus'"></i>
+          {{ isEditing ? ('contacto.update_contact' | translate) : ('contacto.add_contact' | translate) }}
+        </button>
+
+        <button 
+          *ngIf="isEditing" 
+          nz-button 
+          (click)="cancelEdit()" 
+          class="cancel-button"
+        >
+          <i nz-icon nzType="close"></i>
+          {{ 'contacto.cancel' | translate }}
+        </button>
+      </div>
+    </form>
+
+    <nz-divider [nzText]="'contacto.contacts_list' | translate" nzOrientation="left"></nz-divider>
+
+    <!-- Cargando -->
+    <div *ngIf="loadingContacts" class="loading-state">
+      <i nz-icon nzType="loading" nzSpin></i>
+      <p>{{ 'contacto.loading' | translate }}</p>
+    </div>
+
+    <!-- Vacío -->
+    <div *ngIf="!loadingContacts && contacts.length === 0" class="empty-state">
+      <nz-empty nzNotFoundImage="simple">
+        <ng-template #renderEmpty>
+          <span>{{ 'contacto.empty_state' | translate }}</span>
+        </ng-template>
+      </nz-empty>
+    </div>
+
+    <!-- No hay resultados -->
+    <div *ngIf="!loadingContacts && contacts.length > 0 && filteredContacts.length === 0" class="empty-state">
+      <nz-empty nzNotFoundImage="simple">
+        <ng-template #noResultsTpl>
+          <span>{{ 'contacto.no_results' | translate:{ searchValue: searchValue } }}</span>
+        </ng-template>
+      </nz-empty>
+    </div>
+
+    <!-- Tabla -->
+    <nz-table 
+      *ngIf="!loadingContacts && filteredContacts.length > 0"
+      [nzData]="filteredContacts"
+      nzSize="middle"
+      [nzPageSize]="5"
+      [nzScroll]="{ x: '300px' }"
+      nzTableLayout="auto"
+      class="contacts-table"
+    >
+      <thead>
+      <tr>
+        <th nzWidth="60px">{{ 'contacto.table_color' | translate }}</th>
+        <th nzWidth="120px">{{ 'contacto.table_name' | translate }}</th>
+        <th nzWidth="200px">{{ 'contacto.table_address' | translate }}</th>
+        <th>{{ 'contacto.table_description' | translate }}</th>
+        <th>{{ 'contacto.table_actions' | translate }}</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of filteredContacts; let i = index" class="contact-row">
+          <td>
+            <div class="color-badge" [style.background-color]="contact.color"></div>
+          </td>
+          <td>{{ contact.name }}</td>
+          <td class="wallet-address">
+            <span class="address-text">
+              {{ contact.walletAddress | slice:0:6 }}...{{ contact.walletAddress | slice:-4 }}
+            </span>
+            <button 
+              nz-button 
+              nzType="text" 
+              nzSize="small" 
+              (click)="copyToClipboard(contact.walletAddress); $event.stopPropagation()"
+              nz-tooltip 
+              [nzTooltipTitle]="'contacto.copy_tooltip' | translate"
+              class="copy-button"
+            >
+              <i nz-icon nzType="copy"></i>
+            </button>
+          </td>
+          <td class="description-cell">{{ contact.description || ('contacto.no_description' | translate) }}</td>
+          <td class="action-buttons">
+            <button 
+              nz-button 
+              nzType="primary" 
+              nzShape="circle" 
+              nzSize="small" 
+              (click)="editContact(i); $event.stopPropagation()"
+              nz-tooltip 
+              [nzTooltipTitle]="'contacto.edit_tooltip' | translate"
+              class="edit-button"
+            >
+              <i nz-icon nzType="edit"></i>
+            </button>
+
+            <button 
+              nz-button 
+              nzType="primary" 
+              nzDanger 
+              nzShape="circle" 
+              nzSize="small"
+              nz-popconfirm
+              [nzPopconfirmTitle]="'contacto.delete_confirm' | translate"
+              nzPopconfirmPlacement="top"
+              (nzOnConfirm)="deleteContact(i)"
+              (click)="$event.stopPropagation()"
+              nz-tooltip 
+              [nzTooltipTitle]="'contacto.delete_tooltip' | translate"
+              class="delete-button"
+            >
+              <i nz-icon nzType="delete"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</div>

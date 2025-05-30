@@ -1,0 +1,264 @@
+{
+    "_comentario": "init componente",
+    "navbar": {
+        "inicio": "홈",
+        "descripcion": "회사 소개",
+        "objetivos": "우리의 사명",
+        "beneficios": "독점 혜택",
+        "funcionalidades": "기능",
+        "conectar": "지금 지갑을 연결하세요!"
+    },
+    "descripcion": {
+        "titulo": "회사 소개",
+        "contenido": "Ciskoi는 암호화폐 관리 및 운영을 전문으로 하는 혁신적인 플랫폼입니다. 안전하고 효율적인 전송을 촉진하며, 가상 화폐로 모든 작업을 신뢰할 수 있고 투명하게 수행할 수 있는 완전한 디지털 지갑을 제공합니다."
+    },
+    "objetivos": {
+        "titulo": "우리의 사명",
+        "transferencias": {
+            "titulo": "빠르고 안전한 전송",
+            "descripcion": "우리 플랫폼을 통해 실행되는 모든 작업에서 최고 수준의 보안을 유지하면서 최소한의 수수료로 즉시 암호화폐 전송을 촉진합니다."
+        },
+        "cartera": {
+            "titulo": "초안전 디지털 지갑",
+            "descripcion": "최첨단 암호화 및 다중 인증 시스템을 갖춘 시장에서 가장 선진적인 보안 프로토콜을 구현하여 디지털 자산을 보호합니다."
+        },
+        "soporte": {
+            "titulo": "다중 지갑 지원",
+            "descripcion": "여러 디지털 지갑과의 호환성을 제공하여 필요에 따라 사용자 정의 가능한 단일 직관적 인터페이스에서 모든 암호화폐를 관리할 수 있습니다."
+        }
+    },
+    "caracteristicas": {
+        "titulo": "주요 기능",
+        "seguridad": {
+            "titulo": "고급 보안",
+            "descripcion": "디지털 자산을 위한 차세대 보호."
+        },
+        "transacciones": {
+            "titulo": "즉시 거래",
+            "descripcion": "몇 초 안에 암호화폐 송수신."
+        },
+        "multichain": {
+            "titulo": "멀티체인",
+            "descripcion": "여러 블록체인 지원."
+        },
+        "gastos": {
+            "titulo": "지출 관리",
+            "descripcion": "거래의 상세한 추적."
+        }
+    },
+    "beneficios": {
+        "titulo": "독점 혜택",
+        "comisiones": {
+            "titulo": "수수료 절감",
+            "descripcion": "모든 거래에서 시장 최저 수수료를 즐기세요. 다른 플랫폼과 비교해 최대 40% 절약할 수 있습니다."
+        },
+        "staking": {
+            "titulo": "스테이킹 프로그램",
+            "descripcion": "시장 평균을 상회하는 수익률로 암호화폐를 스테이킹 프로그램에 예치하여 수동적 수입을 창출하세요."
+        },
+        "soporte24": {
+            "titulo": "24시간 지원",
+            "descripcion": "전문가 팀이 24시간 연중무휴로 고객님의 질문이나 문제 해결을 위해 대기하고 있습니다."
+        },
+        "referidos": {
+            "titulo": "추천 프로그램",
+            "descripcion": "플랫폼에 초대하는 새로운 사용자마다 매력적인 수수료를 획득하여 지속적인 수입원을 구축하세요."
+        }
+    },
+    "hero": {
+        "titulo": "당신의",
+        "criptomonedas": "암호화폐를 관리하는 최고의 방법",
+        "subtitulo": "안전하고 사용하기 쉬운 플랫폼으로 디지털 자산의 잠재력을 극대화하세요"
+    },
+    "equipo": {
+        "titulo": "우리 팀"
+    },
+    "footer": {
+        "derechos": "모든 권리 보유."
+    },
+    "configuracion": {
+        "titulo": "설정",
+        "idioma": {
+            "titulo": "언어",
+            "descripcion": "선호하는 언어를 선택하세요",
+            "espanol": "스페인어",
+            "ingles": "영어",
+            "japones": "일본어",
+            "coreano": "한국어",
+            "frances": "프랑스어",
+            "cambiar": "언어 변경"
+        }
+    },
+    "_comentari": "Wallet - Menu",
+    "wallet": {
+        "titulo": "CISKOI Wallet",
+        "conectado": "연결됨",
+        "menu": {
+            "inicio": "홈",
+            "contactos": "연락처",
+            "transferencias": "전송",
+            "configuracion": "설정"
+        },
+        "header": {
+            "red": "Ethereum Mainnet",
+            "desconectar": "연결 해제"
+        },
+        "footer": "CISKOI DApp © 2025 - 모든 권리 보유"
+    },
+    "dashboard": {
+        "titulo": "대시보드",
+        "actualizar": "새로고침",
+        "balance": {
+            "eth": "ETH 잔액",
+            "transacciones": "거래"
+        },
+        "transacciones": {
+            "titulo": "거래",
+            "nuevas": "새로운",
+            "nueva_transferencia": "새 송금",
+            "headers": {
+                "hash": "해시",
+                "tipo": "유형",
+                "cantidad": "금액",
+                "estado": "상태",
+                "fecha": "날짜"
+            },
+            "tipos": {
+                "enviado": "전송됨",
+                "recibido": "수신됨"
+            },
+            "estados": {
+                "completado": "완료",
+                "pendiente": "대기 중",
+                "fallido": "실패"
+            }
+        },
+        "modal": {
+            "nueva_transferencia": "새 송금",
+            "enviar": "전송",
+            "cancelar": "취소",
+            "tipo_transferencia": {
+                "eth": "ETH",
+                "token": "토큰"
+            },
+            "campos": {
+                "direccion_destino": "수신 주소",
+                "cantidad": "금액"
+            },
+            "errores": {
+                "direccion_obligatoria": "주소는 필수입니다",
+                "direccion_invalida": "주소가 유효하지 않습니다",
+                "cantidad_obligatoria": "금액은 필수입니다",
+                "cantidad_minima": "최소 금액은 0.00001입니다"
+            }
+        }
+    },
+    "login": {
+        "welcome_title": "DApp에 오신 것을 환영합니다",
+        "connect_subtitle": "거래를 시작하려면 지갑을 연결하세요",
+        "connected_title": "MetaMask에 연결됨",
+        "wallet_label": "지갑:",
+        "redirecting_message": "지갑으로 리디렉션 중...",
+        "connect_button": "MetaMask로 연결",
+        "footer_copyright": "© 2025 CISKOI"
+    },
+    "contacto": {
+        "title": "연락처 관리",
+        "help_text": "송금을 위한 연락처를 관리하세요",
+        "export_tooltip": "연락처 내보내기",
+        "search_placeholder": "연락처 검색...",
+        "new_contact": "새 연락처",
+        "edit_contact": "연락처 편집",
+        "wallet_address_label": "지갑 주소",
+        "wallet_address_placeholder": "예: 0xd5eADFc19df7d604546eE4d98B03B9c6dfCbE2df",
+        "wallet_address_error": "유효한 주소를 입력하세요 (0x... 형식)",
+        "contact_name_label": "연락처 이름",
+        "contact_name_placeholder": "연락처 이름",
+        "contact_name_error": "이름을 입력하세요",
+        "description_label": "설명",
+        "description_placeholder": "선택적 설명",
+        "color_label": "색상",
+        "add_contact": "연락처 추가",
+        "update_contact": "연락처 업데이트",
+        "cancel": "취소",
+        "contacts_list": "연락처 목록",
+        "loading": "연락처 로딩 중...",
+        "empty_state": "아직 추가된 연락처가 없습니다",
+        "no_results": "\"{{searchValue}}\"와 일치하는 연락처를 찾을 수 없습니다",
+        "table_color": "색상",
+        "table_name": "이름",
+        "table_address": "주소",
+        "table_description": "설명",
+        "table_actions": "작업",
+        "copy_tooltip": "주소 복사",
+        "edit_tooltip": "편집",
+        "delete_tooltip": "삭제",
+        "delete_confirm": "이 연락처를 삭제하시겠습니까?",
+        "no_description": "-"
+    },
+    "transaccion": {
+        "wallet": {
+            "title": "ETH 전송",
+            "connect": "지갑 연결",
+            "disconnect": "연결 해제",
+            "balance_tooltip": "지갑 잔액",
+            "not_connected_message": "전송을 하려면 지갑을 연결하세요",
+            "not_connected_description": "전송을 시작하려면 지갑을 연결하세요"
+        },
+        "contract": {
+            "title": "Ciskoi 컨트랙트",
+            "status": "상태",
+            "configured": "구성됨",
+            "not_configured": "구성되지 않음",
+            "configure": "컨트랙트 구성",
+            "change": "컨트랙트 변경",
+            "remove": "삭제",
+            "use_contract": "컨트랙트 사용",
+            "direct_send": "직접 전송",
+            "balance": "컨트랙트 잔액",
+            "warning_message": "컨트랙트 모드를 사용하려면 먼저 컨트랙트 주소를 구성해야 합니다",
+            "modal_title": "컨트랙트 구성",
+            "modal_description": "전송에 사용할 스마트 컨트랙트 주소를 입력하세요:",
+            "modal_address_label": "컨트랙트 주소",
+            "modal_address_error": "유효한 컨트랙트 주소를 입력하세요",
+            "modal_info": "주소가 ETH 전송을 허용하는 유효한 컨트랙트에 해당하는지 확인하세요.",
+            "modal_test": "컨트랙트 테스트",
+            "modal_cancel": "취소"
+        },
+        "transfer": {
+            "recipient_label": "수신자",
+            "recipient_error": "유효한 Ethereum 주소를 입력하세요",
+            "recipient_placeholder": "0x...",
+            "amount_label": "금액 (ETH)",
+            "amount_error": "0.000001보다 큰 유효한 금액을 입력하세요",
+            "amount_placeholder": "0.01",
+            "description_label": "설명",
+            "description_error": "최대 100자",
+            "description_placeholder": "전송 설명",
+            "send_via_contract": "컨트랙트를 통해 전송",
+            "send_directly": "직접 전송",
+            "refresh": "새로고침",
+            "contacts_placeholder": "연락처"
+        },
+        "info": {
+            "title": "정보",
+            "description": "이 화면에서 모든 Ethereum 주소로 ETH 전송을 할 수 있습니다.",
+            "transfer_options": "전송 옵션:",
+            "contract_mode": "컨트랙트 모드: 사용자 정의 스마트 컨트랙트를 사용하여 ETH를 전송합니다.",
+            "direct_mode": "직접 모드: 지갑에서 직접 ETH를 전송합니다.",
+            "daily_limit": "일일 한도",
+            "spent": "사용됨",
+            "limit": "한도",
+            "recent_contacts": "최근 연락처",
+            "no_contacts": "저장된 연락처가 없습니다"
+        },
+        "common": {
+            "loading": "로딩 중...",
+            "error": "오류",
+            "success": "성공",
+            "cancel": "취소",
+            "ok": "확인",
+            "eth": "ETH"
+        }
+    }
+}

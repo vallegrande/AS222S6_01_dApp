@@ -1,0 +1,181 @@
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3lwaDVhNm9hNm50MHcwdmhjbXo1YnE2ZXA4bmRzenNkeDBlcjRsbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XXJN8wBUPfBxtCnZ4v/giphy.gif"
+                alt="Logo" class="logo-img">
+            <a href="#" class="logo">CISKOI<span class="destacado">Wallet</span></a>
+        </div>
+        <ul class="menu">
+            <li><a href="#inicio">{{ 'navbar.inicio' | translate }}</a></li>
+            <li><a href="#descripcion">{{ 'navbar.descripcion' | translate }}</a></li>
+            <li><a href="#objetivos">{{ 'navbar.objetivos' | translate }}</a></li>
+            <li><a href="#beneficios">{{ 'navbar.beneficios' | translate }}</a></li>
+            <li><a href="#funcionalidades">{{ 'navbar.funcionalidades' | translate }}</a></li>
+            <li><button class="connect-btn" nz-button (click)="openLogin()">{{ 'navbar.conectar' | translate }}</button></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Quiénes Somos Section -->
+<section id="descripcion" class="about-section">
+    <div class="container about-container">
+        <div class="about-content">
+            <h2>{{ 'descripcion.titulo' | translate }}</h2>
+            <p><strong>Ciskoi</strong> {{ 'descripcion.contenido' | translate }}</p>
+        </div>
+        <div class="about-image">
+            <img src="https://i0.wp.com/www.orohispanica.es/wp-content/uploads/2022/10/2022-10-12-Aurus-spanish-screen-animation-coins-v3-AD.gif?fit=650%2C650&ssl=1"
+                alt="Equipo CryptoWalletPro">
+        </div>
+    </div>
+</section>
+
+<!-- Objetivos Section -->
+<section id="objetivos" class="objectives-section">
+    <div class="container objectives-container">
+        <h2>{{ 'objetivos.titulo' | translate }}</h2>
+        <div class="objectives-grid">
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <img src="https://www.cointribune.com/app/uploads/2023/04/Logo-Bitcoin.png" alt="Transferencias">
+                </div>
+                <h3>{{ 'objetivos.transferencias.titulo' | translate }}</h3>
+                <p>{{ 'objetivos.transferencias.descripcion' | translate }}</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <img src="https://cdn3d.iconscout.com/3d/free/thumb/free-metamask-6432337-5326393.png?f=webp"
+                        alt="Cartera Segura">
+                </div>
+                <h3>{{ 'objetivos.cartera.titulo' | translate }}</h3>
+                <p>{{ 'objetivos.cartera.descripcion' | translate }}</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <img src="https://www.cointribune.com/app/uploads/2023/04/Logo-Bitcoin.png" alt="Múltiples Wallets">
+                </div>
+                <h3>{{ 'objetivos.soporte.titulo' | translate }}</h3>
+                <p>{{ 'objetivos.soporte.descripcion' | translate }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section">
+    <h2 nz-typography>{{ 'caracteristicas.titulo' | translate }}</h2>
+    <div nz-row [nzGutter]="[24, 24]">
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6" *ngFor="let feature of features; let i = index">
+            <nz-card class="feature-card">
+                <i nz-icon [nzType]="feature.icon" nzTheme="outline"></i>
+                <h3 [ngSwitch]="i">
+                    <span *ngSwitchCase="0">{{ 'caracteristicas.seguridad.titulo' | translate }}</span>
+                    <span *ngSwitchCase="1">{{ 'caracteristicas.transacciones.titulo' | translate }}</span>
+                    <span *ngSwitchCase="2">{{ 'caracteristicas.multichain.titulo' | translate }}</span>
+                    <span *ngSwitchCase="3">{{ 'caracteristicas.gastos.titulo' | translate }}</span>
+                    <span *ngSwitchDefault>{{feature.title}}</span>
+                </h3>
+                <p [ngSwitch]="i">
+                    <span *ngSwitchCase="0">{{ 'caracteristicas.seguridad.descripcion' | translate }}</span>
+                    <span *ngSwitchCase="1">{{ 'caracteristicas.transacciones.descripcion' | translate }}</span>
+                    <span *ngSwitchCase="2">{{ 'caracteristicas.multichain.descripcion' | translate }}</span>
+                    <span *ngSwitchCase="3">{{ 'caracteristicas.gastos.descripcion' | translate }}</span>
+                    <span *ngSwitchDefault>{{feature.description}}</span>
+                </p>
+            </nz-card>
+        </div>
+    </div>
+</section>
+
+<!-- Beneficios Section -->
+<section id="beneficios" class="benefits-section">
+    <div class="container benefits-container">
+        <h2>{{ 'beneficios.titulo' | translate }}</h2>
+        <div class="benefits-slider">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/215/215833.png" alt="Comisiones Reducidas">
+                </div>
+                <h3>{{ 'beneficios.comisiones.titulo' | translate }}</h3>
+                <p>{{ 'beneficios.comisiones.descripcion' | translate }}</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/215/215833.png" alt="Recompensas por Staking">
+                </div>
+                <h3>{{ 'beneficios.staking.titulo' | translate }}</h3>
+                <p>{{ 'beneficios.staking.descripcion' | translate }}</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <img src="https://images.vexels.com/media/users/3/259741/isolated/preview/9e9c428e9a2807d221780a1b94618e03-bitcoin-y-billetera.png"
+                        alt="Soporte Premium">
+                </div>
+                <h3>{{ 'beneficios.soporte24.titulo' | translate }}</h3>
+                <p>{{ 'beneficios.soporte24.descripcion' | translate }}</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <img src="https://images.vexels.com/media/users/3/259741/isolated/preview/9e9c428e9a2807d221780a1b94618e03-bitcoin-y-billetera.png"
+                        alt="Programa de Referidos">
+                </div>
+                <h3>{{ 'beneficios.referidos.titulo' | translate }}</h3>
+                <p>{{ 'beneficios.referidos.descripcion' | translate }}</p>
+            </div>
+        </div>
+    </div>
+</section>      
+
+<section id="inicio" class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>{{ 'hero.titulo' | translate }} <span class="destacado">{{ 'hero.criptomonedas' | translate }}</span></h1>
+            <p>{{ 'hero.subtitulo' | translate }}</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://uploads-ssl.webflow.com/62703d02878b5b3f4f6d8c1c/62703d02878b5b47846d8cfe_CEL_CAJAS.gif"
+                alt="CiskoiWallet Hero">
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+    <h2 nz-typography>{{ 'equipo.titulo' | translate }}</h2>
+    <div nz-row [nzGutter]="[24, 24]">
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" *ngFor="let member of teamMembers">
+            <nz-card class="team-card">
+                <nz-avatar [nzSize]="128" [nzSrc]="member.image" nzShape="circle"></nz-avatar>
+                <h3>{{ member.name }}</h3>
+                <p class="member-role">{{ member.role }}</p>
+                <p class="member-bio">{{ member.bio }}</p>
+
+                <!-- Redes sociales con logos coloridos -->
+                <div class="social-icons">
+                    <a *ngIf="member.social.github" [href]="member.social.github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-grise.png" alt="GitHub" />
+                    </a>
+                    <a *ngIf="member.social.instagram" [href]="member.social.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <img src="https://cdn.pixabay.com/photo/2021/06/15/12/17/instagram-6338401_640.png" alt="Instagram" />
+                    </a>
+                </div>
+            </nz-card>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3lwaDVhNm9hNm50MHcwdmhjbXo1YnE2ZXA4bmRzenNkeDBlcjRsbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XXJN8wBUPfBxtCnZ4v/giphy.gif"
+                    alt="Logo" class="logo-img">
+                <span class="footer-logo-text">CISKOI<span class="destacado">Wallet</span></span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CISKOIWallet. {{ 'footer.derechos' | translate }}</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,168 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #172a7410, #21a8af00);
+    position: relative;
+  }
+  
+  .login-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+  
+  .login-card {
+    width: 420px;
+    border-radius: 25px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .login-logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-logo img {
+    height: 80px;
+    margin: 0 auto;
+    /* En caso de que la imagen no exista */
+    content: "";
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .login-title {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 600;
+     background: linear-gradient(135deg, rgb(102, 3, 251), #0d0034);
+    font-weight: bold;
+    -webkit-background-clip: text;
+    font-family: 'Poppins', sans-serif;
+    -moz-background-clip: text;
+    background-clip: text;       
+    -webkit-text-fill-color: transparent;
+}
+
+  
+  .login-subtitle {
+    text-align: center;
+    margin-bottom: 32px;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .login-form {
+    max-width: 100%;
+  }
+  
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+  
+  .login-form-forgot {
+    float: right;
+    color: #1890ff;
+    cursor: pointer;
+  }
+  
+  .signup-link {
+    margin-top: 24px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .signup-link a {
+    color: #1890ff;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .metamask-button {
+    background: linear-gradient(90deg, #ff730e, #ff009e);
+    border: none;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .metamask-button:hover {
+    background: linear-gradient(90deg, #ff009e, #d26118);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(246, 133, 27, 0.4);
+  }
+  
+  .metamask-connected {
+    text-align: center;
+    padding: 24px 0;
+  }
+  
+  .metamask-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .metamask-icon {
+    font-size: 56px;
+    color: #52c41a;
+  }
+  
+  .wallet-address {
+    background-color: #f5f5f5;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 16px;
+    word-break: break-all;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .login-footer {
+    text-align: center;
+    margin-top: 32px;
+    color: #999;
+    font-size: 12px;
+  }
+  
+  /* Form styling */
+  :host ::ng-deep .ant-input-affix-wrapper {
+    height: 44px;
+    border-radius: 8px;
+  }
+  
+  :host ::ng-deep .ant-input {
+    font-size: 15px;
+  }
+  
+  :host ::ng-deep .ant-btn {
+    height: 44px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  :host ::ng-deep .ant-divider-inner-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+  }

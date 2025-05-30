@@ -1,0 +1,264 @@
+{
+    "_comentario": "init componente",
+    "navbar": {
+        "inicio": "ホーム",
+        "descripcion": "私たちについて",
+        "objetivos": "私たちの使命",
+        "beneficios": "独占特典",
+        "funcionalidades": "機能",
+        "conectar": "今すぐウォレットを接続！"
+    },
+    "descripcion": {
+        "titulo": "私たちについて",
+        "contenido": "Ciskoiは暗号通貨の管理と運営を専門とする革新的なプラットフォームです。安全で効率的な送金を促進し、仮想通貨でのすべての操作を信頼性高く透明に実行できる完全なデジタルウォレットを提供しています。"
+    },
+    "objetivos": {
+        "titulo": "私たちの使命",
+        "transferencias": {
+            "titulo": "高速で安全な送金",
+            "descripcion": "私たちのプラットフォームを通じて実行されるすべての操作で最高レベルのセキュリティを維持しながら、最小限の手数料で即座の暗号通貨送金を促進します。"
+        },
+        "cartera": {
+            "titulo": "超安全デジタルウォレット",
+            "descripcion": "最先端の暗号化と多要素認証システムを備えた、市場で最も先進的なセキュリティプロトコルを実装して、デジタル資産を保護します。"
+        },
+        "soporte": {
+            "titulo": "マルチウォレットサポート",
+            "descripcion": "複数のデジタルウォレットとの互換性を提供し、ニーズに応じてカスタマイズ可能な単一の直感的なインターフェースからすべての暗号通貨を管理できます。"
+        }
+    },
+    "caracteristicas": {
+        "titulo": "主な機能",
+        "seguridad": {
+            "titulo": "高度なセキュリティ",
+            "descripcion": "デジタル資産のための次世代保護。"
+        },
+        "transacciones": {
+            "titulo": "即座の取引",
+            "descripcion": "数秒で暗号通貨を送受信。"
+        },
+        "multichain": {
+            "titulo": "マルチチェーン",
+            "descripcion": "複数のブロックチェーンサポート。"
+        },
+        "gastos": {
+            "titulo": "支出管理",
+            "descripcion": "取引の詳細な追跡。"
+        }
+    },
+    "beneficios": {
+        "titulo": "独占特典",
+        "comisiones": {
+            "titulo": "手数料削減",
+            "descripcion": "すべての取引で業界最低手数料をお楽しみください。他のプラットフォームと比較して最大40%節約できます。"
+        },
+        "staking": {
+            "titulo": "ステーキングプログラム",
+            "descripcion": "市場平均を上回る収益率で、暗号通貨をステーキングプログラムに預けて受動的収入を生み出します。"
+        },
+        "soporte24": {
+            "titulo": "24時間365日サポート",
+            "descripcion": "専門家チームが24時間年中無休で、お客様の疑問や問題の解決に対応しています。"
+        },
+        "referidos": {
+            "titulo": "紹介プログラム",
+            "descripcion": "プラットフォームに招待する新規ユーザーごとに魅力的な手数料を獲得し、継続的な収入源を構築します。"
+        }
+    },
+    "hero": {
+        "titulo": "最高の方法であなたの",
+        "criptomonedas": "暗号通貨を管理",
+        "subtitulo": "安全で使いやすいプラットフォームでデジタル資産の可能性を最大化"
+    },
+    "equipo": {
+        "titulo": "私たちのチーム"
+    },
+    "footer": {
+        "derechos": "全著作権所有。"
+    },
+    "configuracion": {
+        "titulo": "設定",
+        "idioma": {
+            "titulo": "言語",
+            "descripcion": "お好みの言語を選択してください",
+            "espanol": "スペイン語",
+            "ingles": "英語",
+            "japones": "日本語",
+            "coreano": "韓国語",
+            "frances": "フランス語",
+            "cambiar": "言語を変更"
+        }
+    },
+    "_comentari": "Wallet - Menu",
+    "wallet": {
+        "titulo": "CISKOI Wallet",
+        "conectado": "接続済み",
+        "menu": {
+            "inicio": "ホーム",
+            "contactos": "連絡先",
+            "transferencias": "送金",
+            "configuracion": "設定"
+        },
+        "header": {
+            "red": "Ethereum Mainnet",
+            "desconectar": "切断"
+        },
+        "footer": "CISKOI DApp © 2025 - 全権利保留"
+    },
+    "dashboard": {
+        "titulo": "ダッシュボード",
+        "actualizar": "更新",
+        "balance": {
+            "eth": "ETH残高",
+            "transacciones": "取引"
+        },
+        "transacciones": {
+            "titulo": "取引",
+            "nuevas": "新規",
+            "nueva_transferencia": "新しい送金",
+            "headers": {
+                "hash": "ハッシュ",
+                "tipo": "種類",
+                "cantidad": "金額",
+                "estado": "ステータス",
+                "fecha": "日付"
+            },
+            "tipos": {
+                "enviado": "送信済み",
+                "recibido": "受信済み"
+            },
+            "estados": {
+                "completado": "完了",
+                "pendiente": "保留中",
+                "fallido": "失敗"
+            }
+        },
+        "modal": {
+            "nueva_transferencia": "新しい送金",
+            "enviar": "送信",
+            "cancelar": "キャンセル",
+            "tipo_transferencia": {
+                "eth": "ETH",
+                "token": "トークン"
+            },
+            "campos": {
+                "direccion_destino": "送金先アドレス",
+                "cantidad": "金額"
+            },
+            "errores": {
+                "direccion_obligatoria": "アドレスは必須です",
+                "direccion_invalida": "アドレスが無効です",
+                "cantidad_obligatoria": "金額は必須です",
+                "cantidad_minima": "最小金額は0.00001です"
+            }
+        }
+    },
+    "login": {
+        "welcome_title": "DAppへようこそ",
+        "connect_subtitle": "取引を開始するためにウォレットを接続してください",
+        "connected_title": "MetaMaskに接続されました",
+        "wallet_label": "ウォレット:",
+        "redirecting_message": "ウォレットにリダイレクトしています...",
+        "connect_button": "MetaMaskで接続",
+        "footer_copyright": "© 2025 CISKOI"
+    },
+    "contacto": {
+        "title": "連絡先管理",
+        "help_text": "送金用の連絡先を管理",
+        "export_tooltip": "連絡先をエクスポート",
+        "search_placeholder": "連絡先を検索...",
+        "new_contact": "新しい連絡先",
+        "edit_contact": "連絡先を編集",
+        "wallet_address_label": "ウォレットアドレス",
+        "wallet_address_placeholder": "例: 0xd5eADFc19df7d604546eE4d98B03B9c6dfCbE2df",
+        "wallet_address_error": "有効なアドレスを入力してください（0x...形式）",
+        "contact_name_label": "連絡先名",
+        "contact_name_placeholder": "連絡先名",
+        "contact_name_error": "名前を入力してください",
+        "description_label": "説明",
+        "description_placeholder": "オプションの説明",
+        "color_label": "色",
+        "add_contact": "連絡先を追加",
+        "update_contact": "連絡先を更新",
+        "cancel": "キャンセル",
+        "contacts_list": "連絡先リスト",
+        "loading": "連絡先を読み込み中...",
+        "empty_state": "まだ連絡先が追加されていません",
+        "no_results": "\"{{searchValue}}\"に一致する連絡先が見つかりません",
+        "table_color": "色",
+        "table_name": "名前",
+        "table_address": "アドレス",
+        "table_description": "説明",
+        "table_actions": "操作",
+        "copy_tooltip": "アドレスをコピー",
+        "edit_tooltip": "編集",
+        "delete_tooltip": "削除",
+        "delete_confirm": "この連絡先を削除してもよろしいですか？",
+        "no_description": "-"
+    },
+    "transaccion": {
+        "wallet": {
+            "title": "ETH転送",
+            "connect": "ウォレット接続",
+            "disconnect": "切断",
+            "balance_tooltip": "ウォレット残高",
+            "not_connected_message": "転送を行うにはウォレットを接続してください",
+            "not_connected_description": "転送を開始するにはウォレットを接続してください"
+        },
+        "contract": {
+            "title": "Ciskoiコントラクト",
+            "status": "ステータス",
+            "configured": "設定済み",
+            "not_configured": "未設定",
+            "configure": "コントラクト設定",
+            "change": "コントラクト変更",
+            "remove": "削除",
+            "use_contract": "コントラクト使用",
+            "direct_send": "直接送金",
+            "balance": "コントラクト残高",
+            "warning_message": "コントラクトモードを使用するには、まずコントラクトアドレスを設定する必要があります",
+            "modal_title": "コントラクト設定",
+            "modal_description": "転送に使用するスマートコントラクトのアドレスを入力してください：",
+            "modal_address_label": "コントラクトアドレス",
+            "modal_address_error": "有効なコントラクトアドレスを入力してください",
+            "modal_info": "アドレスがETH転送を許可する有効なコントラクトに対応していることを確認してください。",
+            "modal_test": "コントラクトテスト",
+            "modal_cancel": "キャンセル"
+        },
+        "transfer": {
+            "recipient_label": "受信者",
+            "recipient_error": "有効なEthereumアドレスを入力してください",
+            "recipient_placeholder": "0x...",
+            "amount_label": "金額 (ETH)",
+            "amount_error": "0.000001より大きい有効な金額を入力してください",
+            "amount_placeholder": "0.01",
+            "description_label": "説明",
+            "description_error": "最大100文字",
+            "description_placeholder": "転送の説明",
+            "send_via_contract": "コントラクト経由で送金",
+            "send_directly": "直接送金",
+            "refresh": "更新",
+            "contacts_placeholder": "連絡先"
+        },
+        "info": {
+            "title": "情報",
+            "description": "この画面から任意のEthereumアドレスにETH転送を行うことができます。",
+            "transfer_options": "転送オプション：",
+            "contract_mode": "コントラクトモード：カスタムスマートコントラクトを使用してETHを送金します。",
+            "direct_mode": "直接モード：ウォレットから直接ETHを送金します。",
+            "daily_limit": "1日の限度額",
+            "spent": "使用済み",
+            "limit": "限度額",
+            "recent_contacts": "最近の連絡先",
+            "no_contacts": "保存された連絡先がありません"
+        },
+        "common": {
+            "loading": "読み込み中...",
+            "error": "エラー",
+            "success": "成功",
+            "cancel": "キャンセル",
+            "ok": "OK",
+            "eth": "ETH"
+        }
+    }
+}

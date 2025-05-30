@@ -1,0 +1,52 @@
+<div class="network-selector-container">
+  <nz-select
+    class="network-select"
+    [(ngModel)]="selectedNetworkId"
+    (ngModelChange)="onNetworkChange($event)"
+    [nzDisabled]="networkChangeInProgress"
+    nzPlaceHolder="Seleccionar Red"
+    nzSize="large"
+  >
+    <nz-option nzCustomContent nzValue="" nzDisabled nzLabel="Seleccione una red">
+      <span>Seleccione una red</span>
+    </nz-option>
+
+    <nz-option-group nzLabel="Redes Principales">
+      <nz-option
+        *ngFor="let network of mainnetNetworks"
+        [nzValue]="network.id"
+        [nzLabel]="network.name"
+        nzCustomContent
+      >
+        <div class="network-option">
+          <span>{{ network.name }}</span>
+          <nz-tag [nzColor]="getNetworkColor(network)">
+            {{ getNetworkStatus(network) }}
+          </nz-tag>
+        </div>
+      </nz-option>
+    </nz-option-group>
+
+    <nz-option-group nzLabel="Redes de Prueba">
+      <nz-option
+        *ngFor="let network of testnetNetworks"
+        [nzValue]="network.id"
+        [nzLabel]="network.name"
+        nzCustomContent
+      >
+        <div class="network-option">
+          <span>{{ network.name }}</span>
+          <nz-tag [nzColor]="getNetworkColor(network)">
+            {{ getNetworkStatus(network) }}
+          </nz-tag>
+        </div>
+      </nz-option>
+    </nz-option-group>
+  </nz-select>
+
+  <div class="current-network" *ngIf="currentNetwork">
+    <nz-tag [nzColor]="currentNetwork.isTestnet ? 'orange' : 'blue'">
+      Red actual: {{ currentNetwork.name }}
+    </nz-tag>
+  </div>
+</div>

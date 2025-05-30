@@ -1,0 +1,157 @@
+/* You can add global styles to this file, and also import other style files */
+/* Importar fuente Poppins de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: #1f1f1f;
+}
+
+/* Mejoras en los botones */
+button.ant-btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+button.ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff, #096dd9);
+  border: none;
+  box-shadow: 0 2px 6px rgba(24, 144, 255, 0.2);
+}
+
+button.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #096dd9, #0050b3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+/* Mejoras en las tarjetas */
+.ant-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Mejoras en los inputs */
+.ant-input, .ant-input-affix-wrapper {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.ant-input:hover, .ant-input-affix-wrapper:hover {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+}
+
+/* Mejoras en las tablas */
+.ant-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #f0f7ff;
+}
+
+/* Mejoras en los selects */
+.ant-select-selector {
+  border-radius: 8px !important;
+}
+
+/* Mejoras en los badges y tags */
+.ant-badge-status-dot {
+  box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.1);
+}
+
+.ant-tag {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Animaciones suaves */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejoras en el layout */
+.inner-content {
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Mejoras en la tipografía */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+/* Mejoras en los iconos */
+.anticon {
+  transition: all 0.3s ease;
+}
+
+.anticon:hover {
+  transform: scale(1.1);
+}
+
+/* Mejoras en los estados de hover */
+.hover-effect {
+  transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Mejoras en los formularios */
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+/* Mejoras en los modales */
+.ant-modal-content {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.ant-modal-header {
+  border-radius: 16px 16px 0 0;
+}
+
+/* Mejoras en las notificaciones */
+.ant-message-notice-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
